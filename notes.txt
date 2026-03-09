@@ -1,0 +1,21 @@
+page load
+
+startGame()
+
+pick word + reset variables
+
+build ______ display
+
+update screen
+
+guess happens (enter or button)
+
+validate input
+
+duplicate check
+
+add to guessed letters
+
+update word display + used letters + health
+
+check win/lose
