@@ -34,6 +34,59 @@ const difficultyLevels = {
     'Hard': 4
 };
 
+// i'm pasting stuff from another project i did because i kinda need to do something similar
+// I NEED THE FREAKING LIVES TO SET TO THE NUMBER OF TURNS BASED ON THE DIFFICULTY 
+
+const HEART = "\u2764\ufe0f";
+
+const makeHearts = (count) => HEART.repeat(count);
+
+const easyBtn = document.getElementById("easy");
+if (easyBtn) {
+  easyBtn.addEventListener("click", function () {
+    numberOfTurns = 8;
+    localStorage.setItem("difficulty", "8");
+  });
+}
+
+const mediumBtn = document.getElementById("medium");
+if (mediumBtn) {
+  mediumBtn.addEventListener("click", function () {
+    numberOfTurns = 6;
+    localStorage.setItem("difficulty", "6");
+  });
+}
+
+const hardBtn = document.getElementById("hard");
+if (hardBtn) {
+  hardBtn.addEventListener("click", function () {
+    numberOfTurns = 4;
+    localStorage.setItem("difficulty", "4");
+  });
+}
+
+const savedDifficulty = localStorage.getItem("difficulty");
+if (savedDifficulty === "8") {
+  numberOfTurns = 8;
+} else if (savedDifficulty === "6") {
+  numberOfTurns = 6;
+} else if (savedDifficulty === "4") {
+  numberOfTurns = 4;
+}
+
+let lives = numberOfTurns;
+
+const startGame = () => {
+  lives = numberOfTurns;
+  updateHpDisplay();
+};
+
+const updateHpDisplay = () => {
+  document.getElementById("lives").textContent = makeHearts(lives);
+}
+// actually i have no idea what i'm doing
+
 function startGame() {
     
 }
+
