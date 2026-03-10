@@ -9,7 +9,7 @@ function getRandomCategory() {
 const categoryElement = document.getElementById('category');
 categoryElement.textContent = getRandomCategory();
 
-// list of words for each category. 10 words for each
+// list of words for each category. 10 words for each (because i'm extra like that)
 const wordBank = {
     'Produce': ['grapefruit', 'cauliflower', 'zucchini', 'raspberry', 'cucumber', 'asparagus', 'radish', 'cantaloupe', 'eggplant'],
     'Sports': ['gymnastics', 'basketball', 'skateboarding', 'baseball', 'badminton', 'snowboarding', 'archery', 'volleyball', 'swimming', 'lacrosse'],
@@ -24,9 +24,16 @@ const wordBank = {
     'School': ['professor', 'stationery', 'protractor', 'smartboard', 'dictionary', 'bookshelf', 'backpack', 'highlighter', 'textbook', 'sharpener']
 };
 
+// get a random word from the corresponding category
+
+
 // difficulty levels and their corresponding number of allowed incorrect guesses
 const difficultyLevels = {
     'Easy': 8,
     'Medium': 6,
     'Hard': 4
 };
+
+function startGame() {
+    
+}
