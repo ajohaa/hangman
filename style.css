@@ -58,12 +58,23 @@ body{
     flex:1;
 }
 
-/* CATEGORY */
+/* HINT */
 
-.category{
-    font-weight:bold;
+.hint {
+  /* Initial state: hidden */
+   font-weight:bold;
     margin-bottom:20px;
+  opacity: 0;
+  visibility: hidden; /* Use visibility to ensure it doesn't affect layout when hidden */
+  transition: opacity 0.5s ease-in-out; /* Define the transition effect */
 }
+
+.hint.is-visible {
+  /* Visible state */
+  opacity: 1;
+  visibility: visible;
+}
+
 
 /* WORD */
 

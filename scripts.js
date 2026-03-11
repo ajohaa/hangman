@@ -5,10 +5,6 @@ function getRandomCategory() {
     return categories[randomIndex];
 }
 
-// get the category element and set its text to the random category
-const categoryElement = document.getElementById('category');
-categoryElement.textContent = getRandomCategory();
-
 // list of words for each category. 10 words for each (because i'm extra like that)
 const wordBank = {
     'Produce': ['grapefruit', 'cauliflower', 'zucchini', 'raspberry', 'cucumber', 'asparagus', 'radish', 'cantaloupe', 'eggplant'],
@@ -24,7 +20,12 @@ const wordBank = {
     'School': ['professor', 'stationery', 'protractor', 'smartboard', 'dictionary', 'bookshelf', 'backpack', 'highlighter', 'textbook', 'sharpener']
 };
 
-// get a random word from the corresponding category
+// get a random word from the corresponding category when the player starts a new game
+function getRandomWord(category) {
+    const words = wordBank[category];
+    const randomIndex = Math.floor(Math.random() * words.length);
+    return words[randomIndex];
+}
 
 
 // difficulty levels and their corresponding number of allowed incorrect guesses
@@ -71,13 +72,35 @@ const updateHpDisplay = () => {
   document.getElementById("lives").textContent = makeHearts(numberOfTurns);
 }
 
+// when the player clicks the hint button, it should show the category of the word right above it.
 
-// actually i have no idea what i'm doing
-// why is it not working
-// wait im stupid i frogot to put the startGame function in the event listeners for the difficulty buttons
-// also i need to make the startGame function reset the lives to the number of turns based on the difficulty level, and then update the hp display
+const hintBtn = document.getElementById('hint-btn');
+const hintElement = document.getElementById('hint-element');
+const hint = document.getElementById('category-name');
 
+hintBtn.addEventListener('click', function() {
+  // Set the text content of the element to the random category
+  hint.textContent = getRandomCategory();
+  // Toggle the 'is-visible' class on the element
+  hintElement.classList.toggle('is-visible');
+});
+
+// make it unclickable after the first click (because otherwise you could just keep clicking it to get the category name)
+
+hintBtn.addEventListener('click', function() {
+    hint.textContent = getRandomCategory();
+  hintBtn.disabled = true; // Disable the button after the first click
+  hintElement.style.display = 'block'; // Show the hint
+});
+
+// 
+function wordDisplay(word) {
+    const wordContainer = document.getElementById("word");
+    wordContainer.innerHTML = ""; // Clear previous word display
+
+}
 function startGame() {
+    getRandomCategory();
     const savedDifficulty = localStorage.getItem("difficulty");
     if (savedDifficulty === "8") {
       numberOfTurns = 8;
