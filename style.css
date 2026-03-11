@@ -13,19 +13,6 @@ body{
     border-radius:10px;
 }
 
-/* TOP BAR */
-
-.top-bar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.top-icons{
-    display:flex;
-    gap:10px;
-}
-
 .icon-btn{
     font-size:20px;
     padding:8px 10px;
@@ -48,18 +35,7 @@ body{
 
 /* MAIN LAYOUT */
 
-.main-area{
-    display:flex;
-    gap:40px;
-}
-
 /* HANGMAN */
-
-.hangman-area{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
 
 .hangman-box{
     width:200px;
@@ -92,8 +68,6 @@ body{
 /* WORD */
 
 .word{
-    display:flex;
-    gap:15px;
     font-size:30px;
     margin-bottom:30px;
 }
@@ -102,14 +76,14 @@ body{
     border-bottom:3px solid black;
     width:25px;
     text-align:center;
+    display:inline-block;
 }
 
 /* KEYBOARD */
 
-.keyboard{
-    display:grid;
-    grid-template-columns:repeat(7, 50px);
-    gap:10px;
+.keyboard-row .key-col{
+    flex:0 0 calc(100% / 7);
+    max-width:calc(100% / 7);
 }
 
 .key{
@@ -119,6 +93,7 @@ body{
     background:#e6e6e6;
     font-weight:bold;
     cursor:pointer;
+    width:100%;
 }
 
 .key:hover{
@@ -131,31 +106,4 @@ body{
     background:#999;
     color:white;
     cursor:default;
-}
-
-/* SETTINGS */
-
-.settings-panel{
-    width:200px;
-    padding:15px;
-    border:2px solid #ddd;
-    border-radius:8px;
-}
-
-.settings-panel h3{
-    margin-top:0;
-}
-
-.settings-panel input{
-    width:100%;
-    margin:10px 0 20px 0;
-}
-
-.tutorial-btn{
-    width:100%;
-    padding:10px;
-    border:none;
-    border-radius:6px;
-    background:#e0e0e0;
-    cursor:pointer;
 }

@@ -68,8 +68,10 @@ if (hardBtn) {
 }
 
 const updateHpDisplay = () => {
-  document.getElementById("lives").textContent = makeHearts(lives);
+  document.getElementById("lives").textContent = makeHearts(numberOfTurns);
 }
+
+
 // actually i have no idea what i'm doing
 // why is it not working
 // wait im stupid i frogot to put the startGame function in the event listeners for the difficulty buttons

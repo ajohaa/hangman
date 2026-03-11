@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <title>hangman</title>
@@ -20,16 +20,23 @@
   </head>
 
   <body>
-    <div class="game-container">
+    <div class="container game-container">
       <!-- TOP BAR -->
-      <div class="top-bar">
-        <h1>Hangman Game</h1>
-
-        <div class="top-icons">
-          <a href="index.html">
-          <button class="icon-btn">🏠 Home </button>
-          </a>
-          <button class="icon-btn" id="restart-btn">🔄 Restart</button>
+      <div class="row align-items-center mb-3">
+        <div class="col-12 col-md-6">
+          <h1>Hangman Game</h1>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="row g-2 justify-content-md-end">
+            <div class="col-auto">
+              <a href="index.html">
+                <button class="icon-btn">🏠 Home</button>
+              </a>
+            </div>
+            <div class="col-auto">
+              <button class="icon-btn" id="restart-btn">🔄 Restart</button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -38,61 +45,71 @@
         Lives:
       </div>
 
-      <div class="main-area">
+      <div class="row g-4">
         <!-- HANGMAN AREA -->
-        <div class="hangman-area">
-          <div class="hangman-box">
-            <!-- JS will draw hangman here -->
-          </div>
+        <div class="col-12 col-md-4 text-center">
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="hangman-box">
+                <!-- JS will draw hangman here -->
+              </div>
+            </div>
 
-          <button class="hint-btn">💡 Hint</button>
+            <div class="col-12">
+              <button class="hint-btn">💡 Hint</button>
+            </div>
+          </div>
         </div>
 
         <!-- GAME AREA -->
-        <div class="game-area">
+        <div class="col-12 col-md-8">
           <div class="category">
             Category: <span id="category-name">Animals</span>
           </div>
 
-          <div class="word" id="word">
+          <div class="word row row-cols-auto g-3" id="word">
             <!-- JS will display the word here -->
           </div>
 
           <!-- KEYBOARD -->
           <div class="keyboard">
-            <!-- Row 1 -->
-            <button class="key">A</button>
-            <button class="key">B</button>
-            <button class="key">C</button>
-            <button class="key">D</button>
-            <button class="key">E</button>
-            <button class="key">F</button>
-            <button class="key">G</button>
+            <div class="row g-2 mb-2 keyboard-row">
+              <div class="col key-col"><button class="key">A</button></div>
+              <div class="col key-col"><button class="key">B</button></div>
+              <div class="col key-col"><button class="key">C</button></div>
+              <div class="col key-col"><button class="key">D</button></div>
+              <div class="col key-col"><button class="key">E</button></div>
+              <div class="col key-col"><button class="key">F</button></div>
+              <div class="col key-col"><button class="key">G</button></div>
+            </div>
 
-            <!-- Row 2 -->
-            <button class="key">H</button>
-            <button class="key">I</button>
-            <button class="key">J</button>
-            <button class="key">K</button>
-            <button class="key">L</button>
-            <button class="key">M</button>
-            <button class="key">N</button>
+            <div class="row g-2 mb-2 keyboard-row">
+              <div class="col key-col"><button class="key">H</button></div>
+              <div class="col key-col"><button class="key">I</button></div>
+              <div class="col key-col"><button class="key">J</button></div>
+              <div class="col key-col"><button class="key">K</button></div>
+              <div class="col key-col"><button class="key">L</button></div>
+              <div class="col key-col"><button class="key">M</button></div>
+              <div class="col key-col"><button class="key">N</button></div>
+            </div>
 
-            <!-- Row 3 -->
-            <button class="key">O</button>
-            <button class="key">P</button>
-            <button class="key">Q</button>
-            <button class="key">R</button>
-            <button class="key">S</button>
-            <button class="key">T</button>
-            <button class="key">U</button>
+            <div class="row g-2 mb-2 keyboard-row">
+              <div class="col key-col"><button class="key">O</button></div>
+              <div class="col key-col"><button class="key">P</button></div>
+              <div class="col key-col"><button class="key">Q</button></div>
+              <div class="col key-col"><button class="key">R</button></div>
+              <div class="col key-col"><button class="key">S</button></div>
+              <div class="col key-col"><button class="key">T</button></div>
+              <div class="col key-col"><button class="key">U</button></div>
+            </div>
 
-            <!-- Row 4 -->
-            <button class="key">V</button>
-            <button class="key">W</button>
-            <button class="key">X</button>
-            <button class="key">Y</button>
-            <button class="key">Z</button>
+            <div class="row g-2 keyboard-row justify-content-center">
+              <div class="col key-col"><button class="key">V</button></div>
+              <div class="col key-col"><button class="key">W</button></div>
+              <div class="col key-col"><button class="key">X</button></div>
+              <div class="col key-col"><button class="key">Y</button></div>
+              <div class="col key-col"><button class="key">Z</button></div>
+            </div>
           </div>
         </div>
       </div>
