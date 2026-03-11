@@ -41,6 +41,8 @@ const HEART = "\u2764\ufe0f";
 
 const makeHearts = (count) => HEART.repeat(count);
 
+let numberOfTurns = 0;
+
 const easyBtn = document.getElementById("easy");
 if (easyBtn) {
   easyBtn.addEventListener("click", function () {
@@ -65,28 +67,41 @@ if (hardBtn) {
   });
 }
 
-const savedDifficulty = localStorage.getItem("difficulty");
-if (savedDifficulty === "8") {
-  numberOfTurns = 8;
-} else if (savedDifficulty === "6") {
-  numberOfTurns = 6;
-} else if (savedDifficulty === "4") {
-  numberOfTurns = 4;
-}
-
-let lives = numberOfTurns;
-
-const startGame = () => {
-  lives = numberOfTurns;
-  updateHpDisplay();
-};
-
 const updateHpDisplay = () => {
   document.getElementById("lives").textContent = makeHearts(lives);
 }
 // actually i have no idea what i'm doing
+// why is it not working
+// wait im stupid i frogot to put the startGame function in the event listeners for the difficulty buttons
+// also i need to make the startGame function reset the lives to the number of turns based on the difficulty level, and then update the hp display
 
 function startGame() {
-    
+    const savedDifficulty = localStorage.getItem("difficulty");
+    if (savedDifficulty === "8") {
+      numberOfTurns = 8;
+    } else if (savedDifficulty === "6") {
+      numberOfTurns = 6;
+    } else if (savedDifficulty === "4") {
+      numberOfTurns = 4;
+    }
+    lives = numberOfTurns;
+    updateHpDisplay();
 }
 
+// call the startGame function when the player clicks on a difficulty button, and also when the page loads so that the game starts with the correct number of lives based on the saved difficulty level
+
+document.addEventListener("DOMContentLoaded", function() {
+    startGame();
+});
+
+easyBtn.addEventListener("click", function() {
+    startGame();
+});
+
+mediumBtn.addEventListener("click", function() {
+    startGame();
+});
+
+hardBtn.addEventListener("click", function() {
+    startGame();
+});

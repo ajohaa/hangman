@@ -26,8 +26,10 @@
         <h1>Hangman Game</h1>
 
         <div class="top-icons">
-          <button class="icon-btn">🏠</button>
-          <button class="icon-btn">⚙️</button>
+          <a href="index.html">
+          <button class="icon-btn">🏠 Home </button>
+          </a>
+          <button class="icon-btn" id="restart-btn">🔄 Restart</button>
         </div>
       </div>
 
@@ -52,12 +54,8 @@
             Category: <span id="category-name">Animals</span>
           </div>
 
-          <div class="word">
-            <span class="letter">_</span>
-            <span class="letter">_</span>
-            <span class="letter">_</span>
-            <span class="letter">_</span>
-            <span class="letter">_</span>
+          <div class="word" id="word">
+            <!-- JS will display the word here -->
           </div>
 
           <!-- KEYBOARD -->
@@ -96,16 +94,6 @@
             <button class="key">Y</button>
             <button class="key">Z</button>
           </div>
-        </div>
-
-        <!-- SETTINGS PANEL -->
-        <div class="settings-panel">
-          <h3>Settings</h3>
-
-          <label>🔊 Volume</label>
-          <input type="range" min="0" max="100" />
-
-          <button class="tutorial-btn">❓ Tutorial</button>
         </div>
       </div>
     </div>
