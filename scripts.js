@@ -1,42 +1,192 @@
-const categories =  ['Produce', 'Sports', 'Animals', 'Countries', 'Colors', 'Instruments', 'Office', 'Beach', 'Space', 'Transportation', 'School'];
-// choose a random category from the list when the player starts a new game
-function getRandomCategory() {
-    const randomIndex = Math.floor(Math.random() * categories.length);
-    return categories[randomIndex];
-}
+/* ======================================================
+   CATEGORY + WORD DATA
+   ====================================================== */
+
+// Categories list
+const categories = [
+  "Produce",
+  "Sports",
+  "Animals",
+  "Countries",
+  "Colors",
+  "Instruments",
+  "Office",
+  "Beach",
+  "Space",
+  "Transportation",
+  "School",
+];
 
 // list of words for each category. 10 words for each (because i'm extra like that)
 const wordBank = {
-    'Produce': ['grapefruit', 'cauliflower', 'zucchini', 'raspberry', 'cucumber', 'asparagus', 'radish', 'cantaloupe', 'eggplant'],
-    'Sports': ['gymnastics', 'basketball', 'skateboarding', 'baseball', 'badminton', 'snowboarding', 'archery', 'volleyball', 'swimming', 'lacrosse'],
-    'Animals': ['jaguar', 'capybara', 'elephant', 'hippopotamus', 'rhinoceros', 'giraffe', 'kangaroo', 'tortoise', 'orangutan', 'anteater'],
-    'Countries': ['iceland', 'portugal', 'netherlands', 'macedonia', 'switzerland', 'madagascar', 'cambodia', 'nicaragua', 'nigeria', 'luxembourg'],
-    'Colors': ['crimson', 'magenta', 'periwinkle', 'lavender', 'vermilion', 'turquoise', 'chartreuse', 'ultramarine', 'cerulean', 'fuchsia'],
-    'Instruments': ['clarinet', 'saxophone', 'bagpipes', 'xylophone', 'synthesizer', 'accordion', 'trombone', 'harpsichord', 'marimba', 'castanets'],
-    'Office': ['cabinet', 'paperclip', 'desktop', 'printer', 'telephone', 'stapler', 'whiteboard', 'calculator', 'envelope', 'clipboard'],
-    'Beach': ['seagulls', 'flipflops', 'boardwalk', 'seashells', 'inflatables', 'lifeguard', 'sandcastle', 'surfboard', 'tidepool', 'sunscreen'],
-    'Space': ['asteroids', 'nebulae', 'constellation', 'supernova', 'heliocentric', 'cosmonaut', 'meteorite', 'telescope', 'blackhole', 'andromeda'],
-    'Transportation': ['motorcycle', 'submarine', 'rollerblades', 'automobile', 'helicopter', 'bicycle', 'monorail', 'sailboat', 'airplane', 'carriage'],
-    'School': ['professor', 'stationery', 'protractor', 'smartboard', 'dictionary', 'bookshelf', 'backpack', 'highlighter', 'textbook', 'sharpener']
+  Produce: [
+    "grapefruit",
+    "cauliflower",
+    "zucchini",
+    "raspberry",
+    "cucumber",
+    "asparagus",
+    "radish",
+    "cantaloupe",
+    "eggplant",
+  ],
+  Sports: [
+    "gymnastics",
+    "basketball",
+    "skateboarding",
+    "baseball",
+    "badminton",
+    "snowboarding",
+    "archery",
+    "volleyball",
+    "swimming",
+    "lacrosse",
+  ],
+  Animals: [
+    "jaguar",
+    "capybara",
+    "elephant",
+    "hippopotamus",
+    "rhinoceros",
+    "giraffe",
+    "kangaroo",
+    "tortoise",
+    "orangutan",
+    "anteater",
+  ],
+  Countries: [
+    "iceland",
+    "portugal",
+    "netherlands",
+    "macedonia",
+    "switzerland",
+    "madagascar",
+    "cambodia",
+    "nicaragua",
+    "nigeria",
+    "luxembourg",
+  ],
+  Colors: [
+    "crimson",
+    "magenta",
+    "periwinkle",
+    "lavender",
+    "vermilion",
+    "turquoise",
+    "chartreuse",
+    "ultramarine",
+    "cerulean",
+    "fuchsia",
+  ],
+  Instruments: [
+    "clarinet",
+    "saxophone",
+    "bagpipes",
+    "xylophone",
+    "synthesizer",
+    "accordion",
+    "trombone",
+    "harpsichord",
+    "marimba",
+    "castanets",
+  ],
+  Office: [
+    "cabinet",
+    "paperclip",
+    "desktop",
+    "printer",
+    "telephone",
+    "stapler",
+    "whiteboard",
+    "calculator",
+    "envelope",
+    "clipboard",
+  ],
+  Beach: [
+    "seagulls",
+    "flipflops",
+    "boardwalk",
+    "seashells",
+    "inflatables",
+    "lifeguard",
+    "sandcastle",
+    "surfboard",
+    "tidepool",
+    "sunscreen",
+  ],
+  Space: [
+    "asteroids",
+    "nebulae",
+    "constellation",
+    "supernova",
+    "heliocentric",
+    "cosmonaut",
+    "meteorite",
+    "telescope",
+    "blackhole",
+    "andromeda",
+  ],
+  Transportation: [
+    "motorcycle",
+    "submarine",
+    "rollerblades",
+    "automobile",
+    "helicopter",
+    "bicycle",
+    "monorail",
+    "sailboat",
+    "airplane",
+    "carriage",
+  ],
+  School: [
+    "professor",
+    "stationery",
+    "protractor",
+    "smartboard",
+    "dictionary",
+    "bookshelf",
+    "backpack",
+    "highlighter",
+    "textbook",
+    "sharpener",
+  ],
 };
 
-// get a random word from the corresponding category when the player starts a new game
-function getRandomWord(category) {
-    const words = wordBank[category];
-    const randomIndex = Math.floor(Math.random() * words.length);
-    return words[randomIndex];
+/* ======================================================
+   RANDOM CATEGORY + WORD FUNCTIONS
+   ====================================================== */
+
+// Choose a random category when the player starts a new game
+function getRandomCategory() {
+  const randomIndex = Math.floor(Math.random() * categories.length);
+  return categories[randomIndex];
 }
 
+// Choose a random word from the selected category
+function getRandomWord(category) {
+  const words = wordBank[category];
+  const randomIndex = Math.floor(Math.random() * words.length);
+  return words[randomIndex];
+}
 
-// difficulty levels and their corresponding number of allowed incorrect guesses
+// Initial selections
+const category = getRandomCategory();
+const word = getRandomWord(category);
+
+/* ======================================================
+   DIFFICULTY SETTINGS
+   ====================================================== */
+
+// Difficulty levels and allowed incorrect guesses
 const difficultyLevels = {
-    'Easy': 8,
-    'Medium': 6,
-    'Hard': 4
+  Easy: 8,
+  Medium: 6,
+  Hard: 4,
 };
 
-// i'm pasting stuff from another project i did because i kinda need to do something similar
-// I NEED THE FREAKING LIVES TO SET TO THE NUMBER OF TURNS BASED ON THE DIFFICULTY 
+/* ======================================================
+   LIVES / HEART DISPLAY
+   ====================================================== */
 
 const HEART = "\u2764\ufe0f";
 
@@ -44,7 +194,20 @@ const makeHearts = (count) => HEART.repeat(count);
 
 let numberOfTurns = 0;
 
+// Update the heart display on screen
+
+const updateHpDisplay = () => {
+  document.getElementById("lives").textContent = makeHearts(numberOfTurns);
+};
+
+/* ======================================================
+   DIFFICULTY BUTTONS
+   ====================================================== */
+
 const easyBtn = document.getElementById("easy");
+const mediumBtn = document.getElementById("medium");
+const hardBtn = document.getElementById("hard");
+
 if (easyBtn) {
   easyBtn.addEventListener("click", function () {
     numberOfTurns = 8;
@@ -52,7 +215,6 @@ if (easyBtn) {
   });
 }
 
-const mediumBtn = document.getElementById("medium");
 if (mediumBtn) {
   mediumBtn.addEventListener("click", function () {
     numberOfTurns = 6;
@@ -60,7 +222,6 @@ if (mediumBtn) {
   });
 }
 
-const hardBtn = document.getElementById("hard");
 if (hardBtn) {
   hardBtn.addEventListener("click", function () {
     numberOfTurns = 4;
@@ -68,65 +229,107 @@ if (hardBtn) {
   });
 }
 
-const updateHpDisplay = () => {
-  document.getElementById("lives").textContent = makeHearts(numberOfTurns);
-}
+/* ======================================================
+   HINT SYSTEM
+   ====================================================== */
 
-// when the player clicks the hint button, it should show the category of the word right above it.
+const hintBtn = document.getElementById("hint-btn");
+const hintElement = document.getElementById("hint-element");
+const hint = document.getElementById("category-name");
 
-const hintBtn = document.getElementById('hint-btn');
-const hintElement = document.getElementById('hint-element');
-const hint = document.getElementById('category-name');
+// When the player clicks the hint button,
+// show the category of the word above it
+hintBtn.addEventListener("click", function () {
+  // Show category
+  hint.textContent = category;
 
-hintBtn.addEventListener('click', function() {
-  // Set the text content of the element to the random category
+  // Toggle visibility
+  hintElement.classList.toggle("is-visible");
+});
+
+// Disable hint after first click
+hintBtn.addEventListener("click", function () {
   hint.textContent = getRandomCategory();
-  // Toggle the 'is-visible' class on the element
-  hintElement.classList.toggle('is-visible');
+  hintBtn.disabled = true;
+
+  // Show hint
+  hintElement.style.display = "block";
 });
 
-// make it unclickable after the first click (because otherwise you could just keep clicking it to get the category name)
+/* ======================================================
+   WORD DISPLAY (UNDERSCORES)
+   ====================================================== */
 
-hintBtn.addEventListener('click', function() {
-    hint.textContent = getRandomCategory();
-  hintBtn.disabled = true; // Disable the button after the first click
-  hintElement.style.display = 'block'; // Show the hint
-});
+function wordDisplay() {
+  const chosenWord = document.getElementById("word");
+  chosenWord.textContent = ""; // clear previous word display
 
-// 
-function wordDisplay(word) {
-    const wordContainer = document.getElementById("word");
-    wordContainer.innerHTML = ""; // Clear previous word display
-
+  // create an underscore for each letter in the word
+  for (let i = 0; i < word.length; i++) {
+    chosenWord.textContent += "_ ";
+  }
 }
-function startGame() {
-    getRandomCategory();
-    const savedDifficulty = localStorage.getItem("difficulty");
-    if (savedDifficulty === "8") {
-      numberOfTurns = 8;
-    } else if (savedDifficulty === "6") {
-      numberOfTurns = 6;
-    } else if (savedDifficulty === "4") {
-      numberOfTurns = 4;
+
+/* ======================================================
+   WORD DISPLAY (LETTERS)
+   ====================================================== */
+
+   // when the player clicks a letter, check if it's in the word. Check if userLetter equals any letter in the word. then show the designated letters in their correct positions. Use a loop. If there are no matches, call a function to subtract a life. I'll write this later.
+function revealLetter(userLetter) {
+  const chosenWord = document.getElementById("word");
+  const wordArray = chosenWord.textContent.split(" ");
+  for (let i = 0; i< word.length; i++) {
+    if (userLetter === word[i]) {
+      wordArray[i] = userLetter;
+    } else {
+      // try the next letter in the word. End when all letters have been checked. No matches? Call lifeLost() function to subtract a life.
     }
-    lives = numberOfTurns;
-    updateHpDisplay();
+  }
+  chosenWord.textContent = wordArray.join(" ");
 }
 
-// call the startGame function when the player clicks on a difficulty button, and also when the page loads so that the game starts with the correct number of lives based on the saved difficulty level
+function lifeLost() {
+  numberOfTurns--;
+  updateHpDisplay();
+}
 
-document.addEventListener("DOMContentLoaded", function() {
-    startGame();
+/* ======================================================
+   GAME START / INITIALIZATION
+   ====================================================== */
+
+function startGame() {
+  getRandomCategory();
+  const savedDifficulty = localStorage.getItem("difficulty");
+  if (savedDifficulty === "8") {
+    numberOfTurns = 8;
+  } else if (savedDifficulty === "6") {
+    numberOfTurns = 6;
+  } else if (savedDifficulty === "4") {
+    numberOfTurns = 4;
+  }
+  lives = numberOfTurns;
+  updateHpDisplay();
+  wordDisplay();
+}
+
+/* ======================================================
+   EVENT LISTENERS
+   ====================================================== */
+
+// Start game when page loads
+document.addEventListener("DOMContentLoaded", function () {
+  startGame();
 });
 
-easyBtn.addEventListener("click", function() {
-    startGame();
+// Restart game when difficulty is selected
+easyBtn.addEventListener("click", function () {
+  startGame();
 });
 
-mediumBtn.addEventListener("click", function() {
-    startGame();
+mediumBtn.addEventListener("click", function () {
+  startGame();
 });
 
-hardBtn.addEventListener("click", function() {
-    startGame();
+hardBtn.addEventListener("click", function () {
+  startGame();
 });
