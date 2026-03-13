@@ -285,7 +285,6 @@ function revealLetter(userLetter) {
       // try the next letter in the word. End when all letters have been checked. No matches? Call lifeLost() function to subtract a life.
     }
   }
-  chosenWord.textContent = wordArray.join(" ");
 }
 
 function lifeLost() {
