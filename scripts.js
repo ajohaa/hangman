@@ -19,138 +19,19 @@ const categories = [
 
 // list of words for each category. 10 words for each (because i'm extra like that)
 const wordBank = {
-  Produce: [
-    "grapefruit",
-    "cauliflower",
-    "zucchini",
-    "raspberry",
-    "cucumber",
-    "asparagus",
-    "radish",
-    "cantaloupe",
-    "eggplant",
-  ],
-  Sports: [
-    "gymnastics",
-    "basketball",
-    "skateboarding",
-    "baseball",
-    "badminton",
-    "snowboarding",
-    "archery",
-    "volleyball",
-    "swimming",
-    "lacrosse",
-  ],
-  Animals: [
-    "jaguar",
-    "capybara",
-    "elephant",
-    "hippopotamus",
-    "rhinoceros",
-    "giraffe",
-    "kangaroo",
-    "tortoise",
-    "orangutan",
-    "anteater",
-  ],
-  Countries: [
-    "iceland",
-    "portugal",
-    "netherlands",
-    "macedonia",
-    "switzerland",
-    "madagascar",
-    "cambodia",
-    "nicaragua",
-    "nigeria",
-    "luxembourg",
-  ],
-  Colors: [
-    "crimson",
-    "magenta",
-    "periwinkle",
-    "lavender",
-    "vermilion",
-    "turquoise",
-    "chartreuse",
-    "ultramarine",
-    "cerulean",
-    "fuchsia",
-  ],
-  Instruments: [
-    "clarinet",
-    "saxophone",
-    "bagpipes",
-    "xylophone",
-    "synthesizer",
-    "accordion",
-    "trombone",
-    "harpsichord",
-    "marimba",
-    "castanets",
-  ],
-  Office: [
-    "cabinet",
-    "paperclip",
-    "desktop",
-    "printer",
-    "telephone",
-    "stapler",
-    "whiteboard",
-    "calculator",
-    "envelope",
-    "clipboard",
-  ],
-  Beach: [
-    "seagulls",
-    "flipflops",
-    "boardwalk",
-    "seashells",
-    "inflatables",
-    "lifeguard",
-    "sandcastle",
-    "surfboard",
-    "tidepool",
-    "sunscreen",
-  ],
-  Space: [
-    "asteroids",
-    "nebulae",
-    "constellation",
-    "supernova",
-    "heliocentric",
-    "cosmonaut",
-    "meteorite",
-    "telescope",
-    "blackhole",
-    "andromeda",
-  ],
-  Transportation: [
-    "motorcycle",
-    "submarine",
-    "rollerblades",
-    "automobile",
-    "helicopter",
-    "bicycle",
-    "monorail",
-    "sailboat",
-    "airplane",
-    "carriage",
-  ],
-  School: [
-    "professor",
-    "stationery",
-    "protractor",
-    "smartboard",
-    "dictionary",
-    "bookshelf",
-    "backpack",
-    "highlighter",
-    "textbook",
-    "sharpener",
-  ],
+  'Produce': ['grapefruit', 'cauliflower', 'zucchini', 'raspberry', 'cucumber', 'asparagus', 'radish', 'cantaloupe', 'eggplant'],
+  'Sports': ['gymnastics', 'basketball', 'skateboarding', 'baseball', 'badminton', 'snowboarding', 'archery', 'volleyball', 'swimming', 'lacrosse'],
+  'Animals': ['jaguar', 'capybara', 'elephant', 'hippopotamus', 'rhinoceros', 'giraffe', 'kangaroo', 'tortoise', 'orangutan', 'anteater'],
+  'Countries': ['iceland', 'portugal', 'netherlands', 'macedonia', 'switzerland', 'madagascar', 'cambodia', 'nicaragua', 'nigeria', 'luxembourg'],
+  'Colors': ['crimson', 'magenta', 'periwinkle', 'lavender', 'vermilion', 'turquoise', 'chartreuse', 'ultramarine', 'cerulean', 'fuchsia'],
+  'Instruments': ['clarinet', 'saxophone', 'bagpipes', 'xylophone', 'synthesizer', 'accordion', 'trombone', 'harpsichord', 'marimba', 'castanets'],
+  'Office': ['cabinet', 'paperclip', 'desktop', 'printer', 'telephone', 'stapler', 'whiteboard', 'calculator', 'envelope', 'clipboard'],
+  'Beach': ['seagulls', 'flipflops', 'boardwalk', 'seashells', 'inflatables', 'lifeguard', 'sandcastle', 'surfboard', 'tidepool', 'sunscreen'],
+  'Space': ['asteroids', 'nebulae', 'constellation', 'supernova', 'heliocentric', 'cosmonaut', 'meteorite', 'telescope', 'blackhole', 'andromeda'],
+  'Transportation': ['motorcycle', 'submarine', 'rollerblades', 'automobile', 'helicopter', 'bicycle', 'monorail', 'sailboat', 'airplane', 'carriage'],
+  'School': ['professor', 'stationery', 'protractor', 'smartboard', 'dictionary', 'bookshelf', 'backpack', 'highlighter', 'textbook', 'sharpener']
 };
+
 
 /* ======================================================
    RANDOM CATEGORY + WORD FUNCTIONS
@@ -257,32 +138,28 @@ hintBtn.addEventListener("click", function () {
 });
 
 /* ======================================================
-   WORD DISPLAY (UNDERSCORES)
+   WORD DISPLAY
    ====================================================== */
 
-function wordDisplay() {
-  const chosenWord = document.getElementById("word");
-  chosenWord.textContent = ""; // clear previous word display
+// when the player clicks a letter on the keyboard, put that letter into an array guessedLetters
+function pressLetter(letter) {
+  let display = "";
+  let guessedLetters = [];
+  guessedLetters.push(letter);
+  console.log(guessedLetters);
 
-  // create an underscore for each letter in the word
+
   for (let i = 0; i < word.length; i++) {
-    chosenWord.textContent += "_ ";
-  }
-}
-
-/* ======================================================
-   WORD DISPLAY (LETTERS)
-   ====================================================== */
-
-   // when the player clicks a letter, check if it's in the word. Check if userLetter equals any letter in the word. then show the designated letters in their correct positions. Use a loop. If there are no matches, call a function to subtract a life. I'll write this later.
-function revealLetter(userLetter) {
-  const chosenWord = document.getElementById("word");
-  const wordArray = chosenWord.textContent.split(" ");
-  for (let i = 0; i< word.length; i++) {
-    if (userLetter === word[i]) {
-      wordArray[i] = userLetter;
+    let wordLetter = word.charAt(i);
+    // Check if this letter exists in the guessedLetters array
+    if (guessedLetters.includes(wordLetter)) {
+      // If the letter has been guessed,
+      // add the letter to the display string
+      display += wordLetter + " ";
     } else {
-      // try the next letter in the word. End when all letters have been checked. No matches? Call lifeLost() function to subtract a life.
+      // If the letter has NOT been guessed,
+      // add an underscore instead
+      display += "_ ";
     }
   }
 }
@@ -308,7 +185,7 @@ function startGame() {
   }
   lives = numberOfTurns;
   updateHpDisplay();
-  wordDisplay();
+  pressLetter();
 }
 
 /* ======================================================
