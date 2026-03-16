@@ -3,154 +3,23 @@
    ====================================================== */
 
 // Categories list
-const categories = [
-  "Produce",
-  "Sports",
-  "Animals",
-  "Countries",
-  "Colors",
-  "Instruments",
-  "Office",
-  "Beach",
-  "Space",
-  "Transportation",
-  "School",
-];
+const categories = ["Produce", "Sports", "Animals", "Countries", "Colors", "Instruments", "Office", "Beach", "Space", "Transportation", "School"];
 
 // list of words for each category. 10 words for each (because i'm extra like that)
 const wordBank = {
-  Produce: [
-    "grapefruit",
-    "cauliflower",
-    "zucchini",
-    "raspberry",
-    "cucumber",
-    "asparagus",
-    "radish",
-    "cantaloupe",
-    "eggplant",
-  ],
-  Sports: [
-    "gymnastics",
-    "basketball",
-    "skateboarding",
-    "baseball",
-    "badminton",
-    "snowboarding",
-    "archery",
-    "volleyball",
-    "swimming",
-    "lacrosse",
-  ],
-  Animals: [
-    "jaguar",
-    "capybara",
-    "elephant",
-    "hippopotamus",
-    "rhinoceros",
-    "giraffe",
-    "kangaroo",
-    "tortoise",
-    "orangutan",
-    "anteater",
-  ],
-  Countries: [
-    "iceland",
-    "portugal",
-    "netherlands",
-    "macedonia",
-    "switzerland",
-    "madagascar",
-    "cambodia",
-    "nicaragua",
-    "nigeria",
-    "luxembourg",
-  ],
-  Colors: [
-    "crimson",
-    "magenta",
-    "periwinkle",
-    "lavender",
-    "vermilion",
-    "turquoise",
-    "chartreuse",
-    "ultramarine",
-    "cerulean",
-    "fuchsia",
-  ],
-  Instruments: [
-    "clarinet",
-    "saxophone",
-    "bagpipes",
-    "xylophone",
-    "synthesizer",
-    "accordion",
-    "trombone",
-    "harpsichord",
-    "marimba",
-    "castanets",
-  ],
-  Office: [
-    "cabinet",
-    "paperclip",
-    "desktop",
-    "printer",
-    "telephone",
-    "stapler",
-    "whiteboard",
-    "calculator",
-    "envelope",
-    "clipboard",
-  ],
-  Beach: [
-    "seagulls",
-    "flipflops",
-    "boardwalk",
-    "seashells",
-    "inflatables",
-    "lifeguard",
-    "sandcastle",
-    "surfboard",
-    "tidepool",
-    "sunscreen",
-  ],
-  Space: [
-    "asteroids",
-    "nebulae",
-    "constellation",
-    "supernova",
-    "heliocentric",
-    "cosmonaut",
-    "meteorite",
-    "telescope",
-    "blackhole",
-    "andromeda",
-  ],
-  Transportation: [
-    "motorcycle",
-    "submarine",
-    "rollerblades",
-    "automobile",
-    "helicopter",
-    "bicycle",
-    "monorail",
-    "sailboat",
-    "airplane",
-    "carriage",
-  ],
-  School: [
-    "professor",
-    "stationery",
-    "protractor",
-    "smartboard",
-    "dictionary",
-    "bookshelf",
-    "backpack",
-    "highlighter",
-    "textbook",
-    "sharpener",
-  ],
+  'Produce': ['GRAPEFRUIT', 'CAULIFLOWER', 'ZUCCHINI', 'RASPBERRY', 'CUCUMBER', 'ASPARAGUS', 'RADISH', 'CANTALOUPE', 'EGGPLANT'],
+  'Sports': ['GYMNASTICS', 'BASKETBALL', 'SKATEBOARDING', 'BASEBALL', 'BADMINTON', 'SNOWBOARDING', 'ARCHERY', 'VOLLEYBALL', 'SWIMMING', 'LACROSSE'],
+  'Animals': ['JAGUAR', 'CAPYBARA', 'ELEPHANT', 'HIPPOPOTAMUS', 'RHINOCEROS', 'GIRAFFE', 'KANGAROO', 'TORTOISE', 'ORANGUTAN', 'ANTEATER'],
+  'Countries': ['ICELAND', 'PORTUGAL', 'NETHERLANDS', 'MACEDONIA', 'SWITZERLAND', 'MADAGASCAR', 'CAMBODIA', 'NICARAGUA', 'NIGERIA', 'LUXEMBOURG'],
+  'Colors': ['CRIMSON', 'MAGENTA', 'PERIWINKLE', 'LAVENDER', 'VERMILION', 'TURQUOISE', 'CHARTREUSE', 'ULTRAMARINE', 'CERULEAN', 'FUCHSIA'],
+  'Instruments': ['CLARINET', 'SAXOPHONE', 'BAGPIPES', 'XYLOPHONE', 'SYNTHESIZER', 'ACCORDION', 'TROMBONE', 'HARPSICHORD', 'MARIMBA', 'CASTANETS'],
+  'Office': ['CABINET', 'PAPERCLIP', 'DESKTOP', 'PRINTER', 'TELEPHONE', 'STAPLER', 'WHITEBOARD', 'CALCULATOR', 'ENVELOPE', 'CLIPBOARD'],
+  'Beach': ['SEAGULLS', 'FLIPFLOPS', 'BOARDWALK', 'SEASHELLS', 'INFLATABLES', 'LIFEGUARD', 'SANDCASTLE', 'SURFBOARD', 'TIDEPool', 'SUNSCREEN'],
+  'Space': ['ASTEROIDS', 'NEBULAE', 'CONSTELLATION', 'SUPERNOVA', 'HELIOCENTRIC', 'COSMONAUT', 'METEORITE', 'TELESCOPE', 'BLACKHOLE', 'ANDROMEDA'],
+  'Transportation': ['MOTORCYCLE', 'SUBMARINE', 'ROLLERBLADES', 'AUTOMOBILE', 'HELICOPTER', 'BICYCLE', 'MONORAIL', 'SAILBOAT', 'AIRPLANE', 'CARRIAGE'],
+  'School': ['PROFESSOR', 'STATIONERY', 'PROTRACTOR', 'SMARTBOARD', 'DICTIONARY', 'BOOKSHELF', 'BACKPACK', 'HIGHLIGHTER', 'TEXTBOOK', 'SHARPENER']
 };
+
 
 /* ======================================================
    RANDOM CATEGORY + WORD FUNCTIONS
@@ -258,7 +127,7 @@ hintBtn.addEventListener("click", function () {
 
 // Disable hint after first click
 hintBtn.addEventListener("click", function () {
-  hint.textContent = getRandomCategory();
+  hint.textContent = category;
   hintBtn.disabled = true;
 
   // Show hint
@@ -282,7 +151,11 @@ function displayWord() {
   document.getElementById("word").textContent = display.trim();
 }
 
-function pressLetter(letter) {
+function pressLetter(letter) {  
+  if (wrongGuesses.length >= numberOfTurns) {
+  return;
+}
+
   let display = "";
 
   // when the player clicks a letter on the keyboard, put that letter into an array guessedLetters
@@ -319,6 +192,9 @@ function pressLetter(letter) {
 
 function lifeLost() {
   updateHpDisplay();
+   if (wrongGuesses.length >= numberOfTurns) {
+    gameOver();
+  }
 }
 
 /* ======================================================
@@ -328,8 +204,12 @@ function lifeLost() {
 function startGame() {
   wrongGuesses = [];
   guessedLetters = [];
+// hide hint, reset hint button, and choose a new random category and word
+  hintElement.classList.remove("is-visible");
+  hintBtn.disabled = false;
+  category = getRandomCategory();
+  word = getRandomWord(category);
   displayWord();
-  getRandomCategory();
   const savedDifficulty = localStorage.getItem("difficulty");
   if (savedDifficulty === "8") {
     numberOfTurns = 8;
@@ -342,6 +222,16 @@ function startGame() {
   updateHpDisplay();
   pressLetter(letter);
 }
+
+/* ======================================================
+   GAME OVER
+   ====================================================== */
+
+function gameOver() {
+  alert(`Game Over! The word was: ${word}`);
+  startGame();
+}
+
 
 /* ======================================================
    EVENT LISTENERS
