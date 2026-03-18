@@ -29,10 +29,6 @@ body{
     font-size:18px;
 }
 
-.heart{
-    margin-left:3px;
-}
-
 /* MAIN LAYOUT */
 
 /* HANGMAN */
@@ -117,4 +113,9 @@ body{
     background:#999;
     color:white;
     cursor:default;
+}
+
+.carousel-item {
+  height: 100vh;
+  min-height: 300px;
 }

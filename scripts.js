@@ -57,20 +57,26 @@ const difficultyLevels = {
    ERRORS DISPLAY
    ====================================================== */
 
-// i'm pasting stuff from another project i did because i kinda need to do something similar
+// learned for of loop from w3schools 
+// link: https://www.w3schools.com/js/js_loop_forof.asp
 
-const WRONG = "❌";
+const displayErrors = () => {
 
-const displayErrors = (count) => WRONG.repeat(count);
+  let errorDisplay = "";
 
-let numberOfTurns = 0;
+  for (let guess of wrongGuesses) {
 
-// Update the heart display on screen
+    if (guess === "HINT") {
+      errorDisplay += "💡";
+    } else {
+      errorDisplay += "❌";
+    }
+  }
+  return errorDisplay;
+};
 
 const updateHpDisplay = () => {
-  document.getElementById("lives").textContent = displayErrors(
-    wrongGuesses.length,
-  );
+  document.getElementById("lives").textContent = displayErrors(wrongGuesses);
 };
 
 /* ======================================================
@@ -118,20 +124,22 @@ const hint = document.getElementById("category-name");
 // When the player clicks the hint button,
 // show the category of the word above it
 hintBtn.addEventListener("click", function () {
-  // Show category
-  hint.textContent = category;
 
-  // Toggle visibility
-  hintElement.classList.toggle("is-visible");
-});
-
-// Disable hint after first click
-hintBtn.addEventListener("click", function () {
+  // Show the actual category
   hint.textContent = category;
-  hintBtn.disabled = true;
 
   // Show hint
-  hintElement.style.display = "block";
+  hintElement.classList.add("is-visible");
+
+  // Disable after one use
+  hintBtn.disabled = true;
+
+  // Use up one guess (acts like a wrong guess)
+  if (wrongGuesses.length < numberOfTurns) {
+    wrongGuesses.push("HINT");
+    lifeLost();
+  }
+
 });
 
 /* ======================================================
@@ -151,10 +159,10 @@ function displayWord() {
   document.getElementById("word").textContent = display.trim();
 }
 
-function pressLetter(letter) {  
+function pressLetter(letter) {
   if (wrongGuesses.length >= numberOfTurns) {
-  return;
-}
+    return;
+  }
 
   let display = "";
 
@@ -192,8 +200,12 @@ function pressLetter(letter) {
 
 function lifeLost() {
   updateHpDisplay();
-   if (wrongGuesses.length >= numberOfTurns) {
-    gameOver();
+  if (wrongGuesses.length >= numberOfTurns) {
+    alert(`Game Over! The word was: ${word}`);
+    startGame();
+  } else if (!document.getElementById("word").textContent.includes("_")) {
+    alert("Congratulations! You guessed the word!");
+    startGame();
   }
 }
 
@@ -204,7 +216,7 @@ function lifeLost() {
 function startGame() {
   wrongGuesses = [];
   guessedLetters = [];
-// hide hint, reset hint button, and choose a new random category and word
+  // hide hint, reset hint button, and choose a new random category and word
   hintElement.classList.remove("is-visible");
   hintBtn.disabled = false;
   category = getRandomCategory();
@@ -221,15 +233,6 @@ function startGame() {
   lives = numberOfTurns;
   updateHpDisplay();
   pressLetter(letter);
-}
-
-/* ======================================================
-   GAME OVER
-   ====================================================== */
-
-function gameOver() {
-  alert(`Game Over! The word was: ${word}`);
-  startGame();
 }
 
 
