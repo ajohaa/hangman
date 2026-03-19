@@ -146,6 +146,8 @@ hintBtn.addEventListener("click", function () {
    WORD DISPLAY
    ====================================================== */
 
+const hangmanImage = document.querySelector(".hangman-box img");
+
 let wrongGuesses = [];
 let guessedLetters = [];
 
@@ -206,6 +208,8 @@ function pressLetter(letter) {
 
 function lifeLost() {
   updateHpDisplay();
+  // update the hangman image
+  hangmanImage.src = `hangman-${wrongGuesses.length}.svg`;
   if (wrongGuesses.length >= numberOfTurns) {
     alert(`Game Over! The word was: ${word}`);
     startGame();
@@ -219,6 +223,7 @@ function lifeLost() {
 function startGame() {
   wrongGuesses = [];
   guessedLetters = [];
+  hangmanImage.src = `hangman-0.svg`;
   // hide hint, reset hint button, and choose a new random category and word
   hintElement.classList.remove("is-visible");
   hintBtn.disabled = false;
@@ -235,7 +240,6 @@ function startGame() {
   }
   lives = numberOfTurns;
   updateHpDisplay();
-  pressLetter(letter);
 }
 
 

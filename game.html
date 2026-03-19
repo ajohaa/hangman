@@ -51,7 +51,7 @@
           <div class="row g-3">
             <div class="col-12">
               <div class="hangman-box">
-                <!-- JS will draw hangman here -->
+                <img src="hangman-0.svg" alt="hangman-img" />
               </div>
             </div>
 
@@ -68,47 +68,99 @@
           </div>
 
           <div class="word row row-cols-auto g-3 justify-content-center">
-             <span id="word"></span>
+            <span id="word"></span>
           </div>
 
           <!-- KEYBOARD -->
           <div class="keyboard">
             <div class="row g-2 mb-2 keyboard-row">
-              <div class="col key-col"><button class="key" onclick="pressLetter('A')">A</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('B')">B</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('C')">C</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('D')">D</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('E')">E</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('F')">F</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('G')">G</button></div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('A')">A</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('B')">B</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('C')">C</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('D')">D</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('E')">E</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('F')">F</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('G')">G</button>
+              </div>
             </div>
 
             <div class="row g-2 mb-2 keyboard-row">
-              <div class="col key-col"><button class="key" onclick="pressLetter('H')">H</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('I')">I</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('J')">J</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('K')">K</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('L')">L</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('M')">M</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('N')">N</button></div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('H')">H</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('I')">I</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('J')">J</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('K')">K</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('L')">L</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('M')">M</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('N')">N</button>
+              </div>
             </div>
 
             <div class="row g-2 mb-2 keyboard-row">
-              <div class="col key-col"><button class="key" onclick="pressLetter('O')">O</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('P')">P</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('Q')">Q</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('R')">R</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('S')">S</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('T')">T</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('U')">U</button></div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('O')">O</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('P')">P</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('Q')">Q</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('R')">R</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('S')">S</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('T')">T</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('U')">U</button>
+              </div>
             </div>
 
             <div class="row g-2 keyboard-row justify-content-center">
-              <div class="col key-col"><button class="key" onclick="pressLetter('V')">V</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('W')">W</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('X')">X</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('Y')">Y</button></div>
-              <div class="col key-col"><button class="key" onclick="pressLetter('Z')">Z</button></div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('V')">V</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('W')">W</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('X')">X</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('Y')">Y</button>
+              </div>
+              <div class="col key-col">
+                <button class="key" onclick="pressLetter('Z')">Z</button>
+              </div>
             </div>
           </div>
         </div>
