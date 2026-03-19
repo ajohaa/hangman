@@ -196,15 +196,18 @@ function pressLetter(letter) {
 
   // Update the word display on the page
   document.getElementById("word").textContent = display.trim();
+
+  // if there are no underscores left in the word display, the player has won and the game should reset
+  if (!document.getElementById("word").textContent.includes("_")) {
+    alert("Congratulations! You guessed the word!");
+    startGame();
+  }
 }
 
 function lifeLost() {
   updateHpDisplay();
   if (wrongGuesses.length >= numberOfTurns) {
     alert(`Game Over! The word was: ${word}`);
-    startGame();
-  } else if (!document.getElementById("word").textContent.includes("_")) {
-    alert("Congratulations! You guessed the word!");
     startGame();
   }
 }

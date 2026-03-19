@@ -19,28 +19,63 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
-    <h3>choose a difficulty!</h3>
-    <div class="container-fluid px-0 justify-content-center">
-      <div class="row g-2 mb-2">
-        <div class="col-4">
-          <a href="game.html">
+<body>
+<div class="container text-center mt-5">
+
+<!-- Title -->
+<h1 class="mb-4">Hangman Game</h1>
+
+<div class="row align-items-center">
+
+<!-- Hangman Display -->
+<div class="col-md-6">
+<div class="hangman-box d-flex justify-content-center align-items-center">
+
+<div class="gallows">
+<div class="beam"></div>
+<div class="rope"></div>
+
+<div class="stick-figure">
+<div class="head"></div>
+<div class="body"></div>
+<div class="arm left"></div>
+<div class="arm right"></div>
+<div class="leg left"></div>
+<div class="leg right"></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- Difficulty Buttons -->
+<div class="col-md-6">
+<div class="d-grid gap-3">
+<a href="game.html">
             <button class="btn btn-success w-100" id="easy">easy</button>
           </a>
-        </div>
-        <div class="col-4">
           <a href="game.html">
             <button class="btn btn-warning w-100" id="medium">medium</button>
           </a>
-        </div>
-        <div class="col-4">
           <a href="game.html">
             <button class="btn btn-danger w-100" id="hard">hard</button>
           </a>
-        </div>
-      </div>
-    </div>
-    <!-- Bootstrap JavaScript Libraries -->
+</div>
+</div>
+
+</div>
+
+<!-- Tutorial Button -->
+<div class="mt-4">
+  <a href="tutorial.html">
+<button class="btn btn-secondary">Tutorial</button>
+</a>
+</div>
+
+</div>
+
+
+<!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
