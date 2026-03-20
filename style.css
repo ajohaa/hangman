@@ -1,16 +1,17 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background: #abcaee;
     margin: 0;
     padding: 30px;
 }
 
 .game-container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
+    transform: translateY(10%);
     background: white;
-    padding: 25px;
-    border-radius: 10px;
+    padding: 100px;
+    border-radius: 30px;
 }
 
 .icon-btn {
@@ -117,4 +118,15 @@ body {
 .carousel-item {
     height: 100vh;
     min-height: 300px;
+    background-color: white;
+    border-radius: 40px;
+    display: flex;
+}
+
+.carousel h2 {
+    font-size: 28px;
+
+    /* Optional: Add a background color for better readability over images */
+    background-color: white;
+    color: rgb(101, 137, 216); /* Ensure text is readable */
 }
