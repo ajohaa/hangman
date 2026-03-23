@@ -6,11 +6,10 @@ body {
 }
 
 .game-container {
-    max-width: 1300px;
+    max-width: 1200px;
     margin: auto;
-    transform: translateY(10%);
     background: white;
-    padding: 100px;
+    padding: 50px;
     border-radius: 30px;
 }
 
@@ -128,5 +127,105 @@ body {
 
     /* Optional: Add a background color for better readability over images */
     background-color: white;
-    color: rgb(101, 137, 216); /* Ensure text is readable */
+    color: rgb(101, 137, 216);
+    /* Ensure text is readable */
+}
+
+/* Responsive adjustments */
+
+/* stack hangman IMAGE on top of game AREA */
+
+@media (max-width: 1150px) {
+
+    .container {
+        flex-direction: column;
+        padding: 30px;
+        align-items: center;
+    }
+
+    .hangman-box img {
+        max-width: 200px;
+    }
+
+    .game-container {
+        padding: 20px;
+    }
+
+    .game-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hangman-box {
+        margin-bottom: 30px;
+    }
+}
+
+/* GAME MODAL OVERLAY */
+
+.game-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.4s ease;
+}
+
+.game-modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.game-modal .content {
+    background: white;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    border-radius: 30px;
+    padding: 30px;
+}
+
+.game-modal img {
+    max-width: 130px;
+    margin-bottom: 20px;
+}
+
+.game-modal h2 {
+    font-size: 1.53rem;
+    font-weight: 600;
+    margin: 20px 0 10px 0;
+}
+
+.game-modal p {
+    font-size: 1.15rem;
+    margin: 15px 0 30px;
+    font-weight: 500;
+}
+
+.game-modal p b {
+    font-weight: 600;
+    color: #d9534f;
+}
+
+.game-modal button {
+    padding: 12px 23px;
+    border: none;
+    border-radius: 8px;
+    background: #5cb85c;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.game-modal button:hover {
+    background: #4cae4c;
 }

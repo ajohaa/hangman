@@ -1,9 +1,14 @@
+const gameModal = document.querySelector(".game-modal");
+
+
 /* ======================================================
-   CATEGORY + WORD DATA
-   ====================================================== */
+  CATEGORY + WORD DATA
+  ====================================================== */
+
 
 // Categories list
 const categories = ["Produce", "Sports", "Animals", "Countries", "Colors", "Instruments", "Office", "Beach", "Space", "Transportation", "School"];
+
 
 // list of words for each category. 10 words for each (because i'm extra like that)
 const wordBank = {
@@ -20,10 +25,9 @@ const wordBank = {
   'School': ['PROFESSOR', 'STATIONERY', 'PROTRACTOR', 'SMARTBOARD', 'DICTIONARY', 'BOOKSHELF', 'BACKPACK', 'HIGHLIGHTER', 'TEXTBOOK', 'SHARPENER']
 };
 
-
 /* ======================================================
-   RANDOM CATEGORY + WORD FUNCTIONS
-   ====================================================== */
+  RANDOM CATEGORY + WORD FUNCTIONS
+  ====================================================== */
 
 // Choose a random category when the player starts a new game
 function getRandomCategory() {
@@ -43,8 +47,8 @@ let category = getRandomCategory();
 let word = getRandomWord(category);
 
 /* ======================================================
-   DIFFICULTY SETTINGS
-   ====================================================== */
+  DIFFICULTY SETTINGS
+  ====================================================== */
 
 // Difficulty levels and allowed incorrect guesses
 const difficultyLevels = {
@@ -54,10 +58,11 @@ const difficultyLevels = {
 };
 
 /* ======================================================
-   ERRORS DISPLAY
-   ====================================================== */
+  ERRORS DISPLAY
+  ====================================================== */
 
-// learned for of loop from w3schools 
+
+// learned for of loop from w3schools
 // link: https://www.w3schools.com/js/js_loop_forof.asp
 
 const displayErrors = () => {
@@ -77,11 +82,11 @@ const displayErrors = () => {
 
 const updateHpDisplay = () => {
   document.getElementById("lives").textContent = displayErrors(wrongGuesses);
-};
+}
 
 /* ======================================================
-   DIFFICULTY BUTTONS
-   ====================================================== */
+  DIFFICULTY BUTTONS
+  ====================================================== */
 
 // adjusted the code from the same previous project
 
@@ -89,7 +94,7 @@ const easyBtn = document.getElementById("easy");
 const mediumBtn = document.getElementById("medium");
 const hardBtn = document.getElementById("hard");
 
-// also need to make sure that when the player clicks a difficulty button, the game restarts with the new settings (new word, new category, reset wrong guesses, etc.)
+
 if (easyBtn) {
   easyBtn.addEventListener("click", function () {
     numberOfTurns = 8;
@@ -111,11 +116,11 @@ if (hardBtn) {
   });
 }
 
-// need to update logic so that depending on difficulty, the number of wrong guesses until game over changes, and set a maximum of allowed wrong guesses for each difficulty level.
+
 
 /* ======================================================
-   HINT SYSTEM
-   ====================================================== */
+  HINT SYSTEM
+  ====================================================== */
 
 const hintBtn = document.getElementById("hint-btn");
 const hintElement = document.getElementById("hint-element");
@@ -143,8 +148,8 @@ hintBtn.addEventListener("click", function () {
 });
 
 /* ======================================================
-   WORD DISPLAY
-   ====================================================== */
+  WORD DISPLAY
+  ====================================================== */
 
 const hangmanImage = document.querySelector(".hangman-box img");
 
@@ -198,27 +203,46 @@ function pressLetter(letter) {
 
   // Update the word display on the page
   document.getElementById("word").textContent = display.trim();
-
-  // if there are no underscores left in the word display, the player has won and the game should reset
-  if (!document.getElementById("word").textContent.includes("_")) {
-    alert("Congratulations! You guessed the word!");
-    startGame();
-  }
 }
+
 
 function lifeLost() {
   updateHpDisplay();
   // update the hangman image
   hangmanImage.src = `hangman-${wrongGuesses.length}.svg`;
-  if (wrongGuesses.length >= numberOfTurns) {
-    alert(`Game Over! The word was: ${word}`);
-    startGame();
-  }
 }
 
+
+// win/lose placeholders
+
+/* if (!document.getElementById("word").textContent.includes("_")) {
+   alert("Congratulations! You guessed the word!");
+   startGame();
+ } */
+/* if (wrongGuesses.length >= numberOfTurns) {
+  alert(`Game Over! The word was: ${word}`); // placeholder game over alert, will replace with modal later
+  startGame();
+} */
+
+
 /* ======================================================
-   GAME START / INITIALIZATION
-   ====================================================== */
+  actual win/lose
+  ====================================================== */
+
+// Check for victory or defeat after each guess
+const isVictory = !document.getElementById("word").textContent.includes("_");
+const isDefeat = wrongGuesses.length >= numberOfTurns;
+if (isVictory) {
+  gameOver(true);
+} else if (isDefeat) {
+  gameOver(false);
+}
+
+// the game is kind of broken now but its okaaaaaaay ill fix ittttt
+
+/* ======================================================
+  GAME START / INITIALIZATION
+  ====================================================== */
 
 function startGame() {
   wrongGuesses = [];
@@ -242,10 +266,30 @@ function startGame() {
   updateHpDisplay();
 }
 
+/* ======================================================
+  GAME MODAL
+  ====================================================== */
+
+const gameOver = (isVictory) => {
+  setTimeout(() => {
+    const modalText = isVictory ? "You guessed the word:" : `The correct word was:`;
+    gameModal.querySelector("img").src = isVictory ? "victory.gif" : "lost.gif";
+    gameModal.querySelector("h2").innerText = `${isVictory ? "Congratulations!" : "Game Over!"}`;
+    gameModal.querySelector("p").innerHTML = `${modalText} <b>${word}</b>`;
+    gameModal.classList.add("show");
+
+    const playAgainBtn = document.querySelector(".play-again");
+    playAgainBtn.addEventListener("click", () => {
+      gameModal.classList.remove("show");
+      startGame();
+    });
+  }, 300); // Delay to allow the last guess to be seen (searched this up)
+}
+
 
 /* ======================================================
-   EVENT LISTENERS
-   ====================================================== */
+  EVENT LISTENERS
+  ====================================================== */
 
 // Start game when page loads
 document.addEventListener("DOMContentLoaded", function () {
