@@ -1,10 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    background: #92b4db;
+    background: #a3c9f3;
     margin: 0;
     font-family: "hoss-round", sans-serif;
-font-weight: 400;
-font-style: normal;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .homescreen {
@@ -27,8 +27,8 @@ font-style: normal;
     font-size: 20px;
     padding: 8px 10px;
     border: none;
-    background: #a2c0e3;
-    color: #678fbc;
+    background: #d1e7ff;
+    color: #4f8ed6;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -66,7 +66,7 @@ font-style: normal;
 
 .hint {
     /* Initial state: hidden */
-    font-weight: bold;
+    font-size: large;
     margin-bottom: 20px;
     opacity: 0;
     visibility: hidden;
@@ -106,7 +106,7 @@ font-style: normal;
     height: 50px;
     border: none;
     border-radius: 20px;
-    background: #618dbf;
+    background: #7cb2f0;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -114,7 +114,7 @@ font-style: normal;
 }
 
 .key:hover {
-    background: #d5d5d5;
+    background: #99c5f8;
 }
 
 /* GREYED LETTERS (for JS later) */
@@ -127,12 +127,15 @@ font-style: normal;
 
 .carousel-inner {
     justify-content: center;
+    align-items: center;
 }
 
 .carousel-item {
     margin: auto;
+    white-space: normal;
     max-width: 1200px;
-    max-height: 90vh;
+    width: 100% !important;
+    height: 90vh;
     background: white;
     padding: 50px;
     border-radius: 30px;
@@ -141,13 +144,11 @@ font-style: normal;
 .carousel h2 {
     font-size: 28px;
     background-color: white;
-    color: rgb(101, 137, 216);
+    color: rgb(109, 162, 231);
     /* Ensure text is readable */
 }
 
 /* Responsive adjustments */
-
-/* stack hangman IMAGE on top of game AREA */
 
 @media (max-width: 1150px) {
 
@@ -227,19 +228,20 @@ font-style: normal;
 
 .game-modal p b {
     font-weight: 600;
-    color: #4f7dd9;
+    color: #4f8ed6;
+
 }
 
 .game-modal button {
     padding: 12px 23px;
     border: none;
-    border-radius: 8px;
-    background: #5cb85c;
+    border-radius: 15px;
+    background: #79bd79;
     color: white;
     font-size: 1.1rem;
     cursor: pointer;
 }
 
 .game-modal button:hover {
-    background: #4cae4c;
+    background: #54a354;
 }
