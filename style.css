@@ -1,8 +1,18 @@
 body {
     font-family: Arial, sans-serif;
-    background: #abcaee;
+    background: #92b4db;
     margin: 0;
-    padding: 30px;
+    font-family: "hoss-round", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.homescreen {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
 }
 
 .game-container {
@@ -17,7 +27,8 @@ body {
     font-size: 20px;
     padding: 8px 10px;
     border: none;
-    background: #eee;
+    background: #a2c0e3;
+    color: #678fbc;
     border-radius: 6px;
     cursor: pointer;
 }
@@ -70,7 +81,6 @@ body {
     visibility: visible;
 }
 
-
 /* WORD */
 
 .word {
@@ -95,8 +105,9 @@ body {
 .key {
     height: 50px;
     border: none;
-    border-radius: 12px;
-    background: #e6e6e6;
+    border-radius: 20px;
+    background: #618dbf;
+    color: white;
     font-weight: bold;
     cursor: pointer;
     width: 100%;
@@ -114,18 +125,21 @@ body {
     cursor: default;
 }
 
+.carousel-inner {
+    justify-content: center;
+}
+
 .carousel-item {
-    height: 100vh;
-    min-height: 300px;
-    background-color: white;
-    border-radius: 40px;
-    display: flex;
+    margin: auto;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: white;
+    padding: 50px;
+    border-radius: 30px;
 }
 
 .carousel h2 {
     font-size: 28px;
-
-    /* Optional: Add a background color for better readability over images */
     background-color: white;
     color: rgb(101, 137, 216);
     /* Ensure text is readable */
@@ -213,7 +227,7 @@ body {
 
 .game-modal p b {
     font-weight: 600;
-    color: #d9534f;
+    color: #4f7dd9;
 }
 
 .game-modal button {

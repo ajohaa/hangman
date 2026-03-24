@@ -200,45 +200,24 @@ function pressLetter(letter) {
       display += "_ ";
     }
   }
-
   // Update the word display on the page
   document.getElementById("word").textContent = display.trim();
-}
 
+  // Check for victory or defeat after each guess
+  const isVictory = !document.getElementById("word").textContent.includes("_");
+  const isDefeat = wrongGuesses.length >= numberOfTurns;
+  if (isVictory) {
+    gameOver(true);
+  } else if (isDefeat) {
+    gameOver(false);
+  }
+}
 
 function lifeLost() {
   updateHpDisplay();
   // update the hangman image
   hangmanImage.src = `hangman-${wrongGuesses.length}.svg`;
 }
-
-
-// win/lose placeholders
-
-/* if (!document.getElementById("word").textContent.includes("_")) {
-   alert("Congratulations! You guessed the word!");
-   startGame();
- } */
-/* if (wrongGuesses.length >= numberOfTurns) {
-  alert(`Game Over! The word was: ${word}`); // placeholder game over alert, will replace with modal later
-  startGame();
-} */
-
-
-/* ======================================================
-  actual win/lose
-  ====================================================== */
-
-// Check for victory or defeat after each guess
-const isVictory = !document.getElementById("word").textContent.includes("_");
-const isDefeat = wrongGuesses.length >= numberOfTurns;
-if (isVictory) {
-  gameOver(true);
-} else if (isDefeat) {
-  gameOver(false);
-}
-
-// the game is kind of broken now but its okaaaaaaay ill fix ittttt
 
 /* ======================================================
   GAME START / INITIALIZATION
