@@ -1,5 +1,47 @@
 const gameModal = document.querySelector(".game-modal");
 
+/* this is AI, just for carousel arrow styles.
+Has no impact on the actual game itself.*/
+
+const carousel = document.querySelector('#tutorialCarousel');
+const prevBtn = document.querySelector('.carousel-control-prev');
+const nextBtn = document.querySelector('.carousel-control-next');
+const totalSlides = document.querySelectorAll('.carousel-item').length;
+
+// update arrow states
+function updateArrows(index) {
+  // prev button
+  if (index === 0) {
+    prevBtn.style.opacity = "0.3";
+    prevBtn.style.pointerEvents = "none";
+  } else {
+    prevBtn.style.opacity = "1";
+    prevBtn.style.pointerEvents = "auto";
+  }
+
+  // next button
+  if (index === totalSlides - 1) {
+    nextBtn.style.opacity = "0.3";
+    nextBtn.style.pointerEvents = "none";
+  } else {
+    nextBtn.style.opacity = "1";
+    nextBtn.style.pointerEvents = "auto";
+  }
+}
+
+if (carousel && prevBtn && nextBtn && totalSlides > 0) {
+  // update when slide changes
+  carousel.addEventListener('slid.bs.carousel', (event) => {
+    updateArrows(event.to);
+  });
+
+  // run once on page load
+  window.addEventListener('load', () => {
+    updateArrows(0);
+  });
+}
+
+/* end of AI code */
 
 /* ======================================================
   CATEGORY + WORD DATA
@@ -128,24 +170,26 @@ const hint = document.getElementById("category-name");
 
 // When the player clicks the hint button,
 // show the category of the word above it
-hintBtn.addEventListener("click", function () {
+if (hintBtn && hintElement && hint) {
+  hintBtn.addEventListener("click", function () {
 
-  // Show the actual category
-  hint.textContent = category;
+    // Show the actual category
+    hint.textContent = category;
 
-  // Show hint
-  hintElement.classList.add("is-visible");
+    // Show hint
+    hintElement.classList.add("is-visible");
 
-  // Disable after one use
-  hintBtn.disabled = true;
+    // Disable after one use
+    hintBtn.disabled = true;
 
-  // Use up one guess (acts like a wrong guess)
-  if (wrongGuesses.length < numberOfTurns) {
-    wrongGuesses.push("HINT");
-    lifeLost();
-  }
+    // Use up one guess (acts like a wrong guess)
+    if (wrongGuesses.length < numberOfTurns) {
+      wrongGuesses.push("HINT");
+      lifeLost();
+    }
 
-});
+  });
+}
 
 /* ======================================================
   WORD DISPLAY
@@ -163,7 +207,10 @@ function displayWord() {
     display += "_ ";
   }
 
-  document.getElementById("word").textContent = display.trim();
+  const wordEl = document.getElementById("word");
+  if (wordEl) {
+    wordEl.textContent = display.trim();
+  }
 }
 
 function pressLetter(letter) {
@@ -201,10 +248,13 @@ function pressLetter(letter) {
     }
   }
   // Update the word display on the page
-  document.getElementById("word").textContent = display.trim();
+  const wordEl = document.getElementById("word");
+  if (wordEl) {
+    wordEl.textContent = display.trim();
+  }
 
   // Check for victory or defeat after each guess
-  const isVictory = !document.getElementById("word").textContent.includes("_");
+  const isVictory = wordEl ? !wordEl.textContent.includes("_") : false;
   const isDefeat = wrongGuesses.length >= numberOfTurns;
   if (isVictory) {
     gameOver(true);
@@ -216,7 +266,9 @@ function pressLetter(letter) {
 function lifeLost() {
   updateHpDisplay();
   // update the hangman image
-  hangmanImage.src = `hangman-${wrongGuesses.length}.svg`;
+  if (hangmanImage) {
+    hangmanImage.src = `hangman-${wrongGuesses.length}.svg`;
+  }
 }
 
 /* ======================================================
@@ -226,10 +278,16 @@ function lifeLost() {
 function startGame() {
   wrongGuesses = [];
   guessedLetters = [];
-  hangmanImage.src = `hangman-0.svg`;
+  if (hangmanImage) {
+    hangmanImage.src = `hangman-0.svg`;
+  }
   // hide hint, reset hint button, and choose a new random category and word
-  hintElement.classList.remove("is-visible");
-  hintBtn.disabled = false;
+  if (hintElement) {
+    hintElement.classList.remove("is-visible");
+  }
+  if (hintBtn) {
+    hintBtn.disabled = false;
+  }
   category = getRandomCategory();
   word = getRandomWord(category);
   displayWord();
@@ -251,6 +309,7 @@ function startGame() {
 
 const gameOver = (isVictory) => {
   setTimeout(() => {
+    if (!gameModal) return;
     const modalText = isVictory ? "You guessed the word:" : `The correct word was:`;
     gameModal.querySelector("img").src = isVictory ? "victory.gif" : "lost.gif";
     gameModal.querySelector("h2").innerText = `${isVictory ? "Congratulations!" : "Game Over!"}`;
@@ -258,10 +317,12 @@ const gameOver = (isVictory) => {
     gameModal.classList.add("show");
 
     const playAgainBtn = document.querySelector(".play-again");
-    playAgainBtn.addEventListener("click", () => {
-      gameModal.classList.remove("show");
-      startGame();
-    });
+    if (playAgainBtn) {
+      playAgainBtn.addEventListener("click", () => {
+        gameModal.classList.remove("show");
+        startGame();
+      });
+    }
   }, 300); // Delay to allow the last guess to be seen (searched this up)
 }
 
@@ -272,18 +333,27 @@ const gameOver = (isVictory) => {
 
 // Start game when page loads
 document.addEventListener("DOMContentLoaded", function () {
-  startGame();
+  const hasGameUi = document.getElementById("word") && hangmanImage;
+  if (hasGameUi) {
+    startGame();
+  }
 });
 
 // Restart game when difficulty is selected
-easyBtn.addEventListener("click", function () {
-  startGame();
-});
+if (easyBtn) {
+  easyBtn.addEventListener("click", function () {
+    startGame();
+  });
+}
 
-mediumBtn.addEventListener("click", function () {
-  startGame();
-});
+if (mediumBtn) {
+  mediumBtn.addEventListener("click", function () {
+    startGame();
+  });
+}
 
-hardBtn.addEventListener("click", function () {
-  startGame();
-});
+if (hardBtn) {
+  hardBtn.addEventListener("click", function () {
+    startGame();
+  });
+}
