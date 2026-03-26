@@ -123,7 +123,21 @@ const displayErrors = () => {
 };
 
 const updateHpDisplay = () => {
-  document.getElementById("lives").textContent = displayErrors(wrongGuesses);
+  const livesEl = document.getElementById("lives");
+  if (!livesEl) return;
+  const errorsText = displayErrors(wrongGuesses);
+  if (errorsText.length === 0) {
+    // Keep space reserved without showing content
+    livesEl.textContent = "\u00A0";
+    livesEl.classList.remove("is-visible");
+    livesEl.classList.remove("bump");
+    return;
+  }
+  livesEl.textContent = errorsText;
+  livesEl.classList.add("is-visible");
+  livesEl.classList.remove("bump");
+  void livesEl.offsetWidth; // reflow to restart animation
+  livesEl.classList.add("bump");
 }
 
 /* ======================================================

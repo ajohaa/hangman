@@ -38,6 +38,26 @@ body {
 .lives {
     margin: 10px 0 20px 0;
     font-size: 18px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    min-height: 1.2em;
+    white-space: nowrap;
+}
+
+.lives.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lives.bump {
+    animation: lives-bump 200ms ease;
+}
+
+@keyframes lives-bump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
 }
 
 /* MAIN LAYOUT */
