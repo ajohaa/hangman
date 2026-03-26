@@ -227,7 +227,13 @@ function displayWord() {
   }
 }
 
-function pressLetter(letter) {
+function pressLetter(letter, button) {
+
+  // prevent clicking again
+  if (button) {
+    button.disabled = true;
+  }
+
   if (wrongGuesses.length >= numberOfTurns) {
     return;
   }
@@ -292,6 +298,13 @@ function lifeLost() {
 function startGame() {
   wrongGuesses = [];
   guessedLetters = [];
+
+  const keys = document.querySelectorAll(".key");
+
+  keys.forEach(function (key) {
+    key.disabled = false;
+  });
+
   if (hangmanImage) {
     hangmanImage.src = `hangman-0.svg`;
   }
@@ -318,7 +331,7 @@ function startGame() {
 }
 
 /* ======================================================
-  GAME MODAL
+  GAME MODAL (from coding nepal)
   ====================================================== */
 
 const gameOver = (isVictory) => {
@@ -332,10 +345,10 @@ const gameOver = (isVictory) => {
 
     const playAgainBtn = document.querySelector(".play-again");
     if (playAgainBtn) {
-      playAgainBtn.addEventListener("click", () => {
+      playAgainBtn.onclick = () => {
         gameModal.classList.remove("show");
         startGame();
-      });
+      };
     }
   }, 300); // Delay to allow the last guess to be seen (searched this up)
 }

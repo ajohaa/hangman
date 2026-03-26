@@ -131,18 +131,25 @@ body {
     font-weight: bold;
     cursor: pointer;
     width: 100%;
+      transition: all 0.2s ease;
 }
 
 .key:hover {
     background: #99c5f8;
+    transform: scale(1.05);
 }
 
-/* GREYED LETTERS (for JS later) */
+.key:active {
+    transform: scale(0.95);
+        background: #619de1;
+}
 
-.key.used {
+/* GREYED LETTERS */
+
+.key:disabled {
     background: #999;
     color: white;
-    cursor: default;
+    cursor: not-allowed;
 }
 
 /* carousel */
@@ -263,6 +270,12 @@ body {
 .game-modal.show {
     opacity: 1;
     pointer-events: auto;
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .game-modal .content {
