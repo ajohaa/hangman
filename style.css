@@ -2,10 +2,88 @@ body {
     font-family: Arial, sans-serif;
     background: #a3c9f3;
     margin: 0;
-    font-family: "hoss-round", sans-serif;
+    font-family: cc-dash-to-school, sans-serif;
     font-weight: 400;
     font-style: normal;
 }
+
+h1 {
+    font-family: cc-dash-to-school-outline, sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 3rem;
+    color: #2963a5;
+    margin-bottom: 20px;
+}
+
+.difficulty {
+    border: 0 solid #E5E7EB;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: cc-dash-to-school, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+    display: flex;
+    font-size: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: .75rem 1.65rem;
+    line-height: 1.75rem;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    cursor: pointer;
+}
+
+.difficulty:focus {
+    outline: 0;
+}
+
+.difficulty:after {
+    border-radius: 10px;
+
+    content: '';
+    position: absolute;
+    border: 2px solid #2963a5;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+    transition: all 0.15s ease;
+}
+
+.difficulty:hover:after {
+    bottom: 2px;
+    left: 2px;
+}
+
+.d-grid a {
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .difficulty {
+        padding: .75rem 3rem;
+        font-size: 1.25rem;
+    }
+}
+
+.btn-easy {
+    background-color: #99c5f8;
+}
+
+.btn-medium {
+    background-color: #6da6e7;
+}
+
+.btn-hard {
+    background-color: #417dc2;
+}
+
 
 .homescreen {
     max-width: 1200px;
@@ -55,9 +133,17 @@ body {
 }
 
 @keyframes lives-bump {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
-    100% { transform: translateY(0); }
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* MAIN LAYOUT */
@@ -74,6 +160,9 @@ body {
     border-radius: 8px;
     background: #ffd966;
     cursor: pointer;
+    color: #b17b18;
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 /* GAME AREA */
@@ -86,13 +175,14 @@ body {
 
 .hint {
     /* Initial state: hidden */
-    font-size: large;
+    font-size: 1.5rem;
     margin-bottom: 20px;
     opacity: 0;
     visibility: hidden;
     /* Use visibility to ensure it doesn't affect layout when hidden */
     transition: opacity 0.5s ease-in-out;
     /* Define the transition effect */
+    color: #2963a5;
 }
 
 .hint.is-visible {
@@ -131,7 +221,7 @@ body {
     font-weight: bold;
     cursor: pointer;
     width: 100%;
-      transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .key:hover {
@@ -141,7 +231,7 @@ body {
 
 .key:active {
     transform: scale(0.95);
-        background: #619de1;
+    background: #619de1;
 }
 
 /* GREYED LETTERS */
@@ -192,13 +282,14 @@ body {
 .carousel-control-next {
     right: 0;
     transform: translateX(100%);
-        margin-top: 10%;
+    margin-top: 10%;
 
 }
 
 .carousel-control-prev,
 .carousel-control-next {
-    transition: opacity 0.3s ease; /* smooth fade */
+    transition: opacity 0.3s ease;
+    /* smooth fade */
 }
 
 .carousel h2 {
@@ -274,8 +365,13 @@ body {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .game-modal .content {
@@ -293,13 +389,13 @@ body {
 }
 
 .game-modal h2 {
-    font-size: 1.53rem;
+    font-size: 1.6rem;
     font-weight: 600;
     margin: 20px 0 10px 0;
 }
 
 .game-modal p {
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     margin: 15px 0 30px;
     font-weight: 500;
 }
@@ -316,7 +412,7 @@ body {
     border-radius: 15px;
     background: #79bd79;
     color: white;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 

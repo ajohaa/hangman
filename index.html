@@ -17,53 +17,49 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/iou1vnd.css">
+    <link rel="stylesheet" href="https://use.typekit.net/iou1vnd.css" />
   </head>
 
-<body>
-<div class="container homescreen text-center mt-5">
+  <body>
+    <div class="container homescreen text-center mt-5">
+      <!-- Title -->
+      <h1 class="mb-4">Hangman Game</h1>
 
-<!-- Title -->
-<h1 class="mb-4">Hangman Game</h1>
+      <div class="row align-items-center">
+        <!-- Hangman Display -->
+        <div class="col-md-6">
+          <div class="container">
+            <img src="hangman-8.svg" alt="hangman-img" />
+          </div>
+        </div>
 
-<div class="row align-items-center">
+        <!-- Difficulty Buttons -->
+        <div class="col-md-6">
+          <div class="d-grid gap-3">
+            <a href="game.html">
+              <button class="difficulty btn-easy w-100" id="easy">easy</button>
+            </a>
+            <a href="game.html">
+              <button class="difficulty btn-medium w-100" id="medium">
+                medium
+              </button>
+            </a>
+            <a href="game.html">
+              <button class="difficulty btn-hard w-100" id="hard">hard</button>
+            </a>
+          </div>
+        </div>
+      </div>
 
-<!-- Hangman Display -->
-<div class="col-md-6">
-<div class="container">
-<img src="hangman-8.svg" alt="hangman-img"/>
+      <!-- Tutorial Button -->
+      <div class="mt-4">
+        <a href="tutorial.html">
+          <button class="btn btn-secondary">Tutorial</button>
+        </a>
+      </div>
+    </div>
 
-</div>
-</div>
-
-<!-- Difficulty Buttons -->
-<div class="col-md-6">
-<div class="d-grid gap-3">
-<a href="game.html">
-            <button class="btn btn-success w-100" id="easy">easy</button>
-          </a>
-          <a href="game.html">
-            <button class="btn btn-warning w-100" id="medium">medium</button>
-          </a>
-          <a href="game.html">
-            <button class="btn btn-danger w-100" id="hard">hard</button>
-          </a>
-</div>
-</div>
-
-</div>
-
-<!-- Tutorial Button -->
-<div class="mt-4">
-  <a href="tutorial.html">
-<button class="btn btn-secondary">Tutorial</button>
-</a>
-</div>
-
-</div>
-
-
-<!-- Bootstrap JavaScript Libraries -->
+    <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
